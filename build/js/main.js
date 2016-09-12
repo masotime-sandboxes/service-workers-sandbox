@@ -18,24 +18,22 @@ function preliminaries() {
 	});
 }
 
+function subscribe(reg) {
+	return reg.pushManager.subscribe({
+		userVisibleOnly: true
+	}).then(sub => {
+		const { endpoint } = sub;
+		const key = sub.getKey('p256dh');
+		console.log(`🔵 ${JSON.stringify({key, endpoint}, null, 4)}`);
+	})
+}
+
 function main() {
 	if ('serviceWorker' in navigator) {
 		console.log('🔵 Service Worker supported by browser');
 
 		return navigator.serviceWorker.register('/js/sw.js')
-			.then(reg => {
-				console.log('🔵', reg);	
-
-				if (!reg.showNotification) {
-					throw new Error('Notifications are not supported by Service workers');
-				}
-
-				return reg.pushManager.subscribe({
-					userVisibleOnly: true
-				});
-			}).then(sub => {
-				console.log(`endpoint: ${sub.endpoint}`);
-			});
+			.then(subscribe);
 
 	} else {
 		throw new Error('Service Workers not supported by browser');

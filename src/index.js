@@ -1,5 +1,4 @@
 import express from 'express';
-import opn from 'opn';
 import expressBabel from 'express-babel';
 
 import { reactHelloRoute } from 'server/routes';
@@ -25,9 +24,8 @@ async function main() {
 	app.use('/', reactHelloRoute());
 
 	await listen(app, port);
-	await opn(`http://localhost:${port}`);
 
-	console.log('Browser open');
+	console.log('Ready');
 }
 
 execute(main);

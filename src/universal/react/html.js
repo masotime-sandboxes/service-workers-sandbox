@@ -7,6 +7,7 @@ export default class Html extends Component {
 			<head>
 				{ /* hardcode these for now */ }
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta charSet="utf-8" />
 				<link rel="stylesheet" href="css/styles.css" />
 				{ /* <link rel="manifest" href="json/manifest.json" /> */ }
 				<title>Push Notifications codelab</title>
