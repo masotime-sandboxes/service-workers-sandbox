@@ -9,11 +9,13 @@ export default class Html extends Component {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta charSet="utf-8" />
 				<link rel="stylesheet" href="css/styles.css" />
-				{ /* <link rel="manifest" href="json/manifest.json" /> */ }
+				<link rel="manifest" href="json/manifest.json" />
 				<title>Push Notifications codelab</title>
 			</head>
 			<body>
 				{ props.children }
+				<script src="js/vendor.bundle.js"></script>
+				<script src="js/app.js"></script>
 			</body>
 		</html>);
 	}

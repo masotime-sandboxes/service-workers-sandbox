@@ -1,8 +1,8 @@
 import express from 'express';
-import expressBabel from 'express-babel';
 
-import { reactHelloRoute } from 'server/routes';
-import { listen } from 'util/express';
+import routes from 'server/routes';
+import * as config from 'server/webpack';
+import { listen, webpackMiddleware } from 'util/express';
 
 async function execute(fn) {
 	try {
@@ -15,13 +15,15 @@ async function execute(fn) {
 async function main() {
 	const app = express();
 	const port = process.env.PORT || 3000;
-	const babelOpts = {
-		presets: ['stage-0', 'es2015']
-	};
 
-	app.use('/js', expressBabel('build/js', babelOpts));
-	['css', 'json'].forEach(folder => app.use(`/${folder}`, express.static(`build/${folder}`)));
-	app.use('/', reactHelloRoute());
+	app.use(webpackMiddleware({
+		compiler: config.compiler,
+		middleware: config.middleware
+	}));
+
+	app.use('/css', express.static('build/css'));
+	app.use('/json', express.static('build/json'));
+	app.use('/', routes());
 
 	await listen(app, port);
 

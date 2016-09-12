@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "babel-node src/index.js",
+    "webpack-dev": "webpack-dev-server --config ./src/server/webpack.dev.babel.js --hot --inline --progress",
     "watch": "nodemon src/index.js --exec babel-node --watch src",
     "lint": "eslint src/*",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,13 +22,16 @@
     "express": "^4.14.0",
     "express-babel": "^1.0.2",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "webpack-dev-middleware": "^1.7.0"
   },
   "devDependencies": {
     "babel-eslint": "^6",
+    "babel-loader": "^6.2.5",
+    "babel-polyfill": "^6.13.0",
     "eslint": "^2",
     "eslint-plugin-react": "^6.2.0",
     "nodemon": "^1.10.2",
-    "opn": "^4.0.2"
+    "webpack": "^1.13.2"
   }
 }

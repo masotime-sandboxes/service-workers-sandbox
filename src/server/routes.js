@@ -1,23 +1,16 @@
 import { Router } from 'express';
-import * as Render from 'server/render';
+import { renderToString } from 'react-dom/server';
 
-export function helloRoute() {
+import root from 'universal/react/root';
+
+export default function routes() {
 	const router = Router();
 
 	router.get('/', (req, res) => {
 		const { name = 'world' } = req.query;
-		res.end(Render.hello(name));
+		const component = root({ name });
+		res.end(`<!doctype html>${renderToString(component)}`);
 	});
 
-	return router;
-}
-
-export function reactHelloRoute() {
-	const router = Router();
-
-	router.get('/', (req, res) => {
-		const { name = 'world' } = req.query;
-		res.end(Render.reactHello(name));
-	})
 	return router;
 }
