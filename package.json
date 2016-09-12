@@ -18,6 +18,7 @@
     "babel-preset-stage-0": "^6",
     "bluebird": "^3.4.6",
     "express": "^4.14.0",
+    "express-babel": "^1.0.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
   },

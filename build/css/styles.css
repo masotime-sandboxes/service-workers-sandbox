@@ -1,0 +1,19 @@
+body {
+	font-family: Iowan Old Style;
+	padding: 0;
+	margin: 0;
+	text-rendering: optimizeLegibility;
+	webkit-font-smoothing: antialiased;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#container {
+	padding: 1em;
+}
+
+h1 {
+	margin-top: 0;
+}
