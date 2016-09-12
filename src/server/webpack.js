@@ -20,7 +20,6 @@ export const compiler = {
   env : env.NODE_ENV,
   entry: {
     app: ['babel-polyfill', resolve(process.cwd(), 'src/browser/index.js')],
-    sw: resolve(process.cwd(), 'src/browser/sw.js'),
     vendor: ['react', 'react-dom', 'bluebird']
   },
   output: {

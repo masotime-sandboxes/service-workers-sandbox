@@ -27,6 +27,7 @@ async function subscribe(reg) {
 	const { endpoint } = sub;
 	const key = sub.getKey('p256dh');
 	console.log(`🔵 ${JSON.stringify({key, endpoint}, null, 4)}`);
+	return endpoint;
 }
 
 export default async function main() {

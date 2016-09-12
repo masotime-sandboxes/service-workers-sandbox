@@ -16,6 +16,11 @@ async function main() {
 	const app = express();
 	const port = process.env.PORT || 3000;
 
+	// just for this one file (serviceworker)
+	app.get('/js/sw.js', (req, res) => {
+		res.sendFile(process.cwd() + '/build/js/sw.js');
+	});
+
 	app.use(webpackMiddleware({
 		compiler: config.compiler,
 		middleware: config.middleware
